@@ -51,7 +51,7 @@
                 <li></li>
                 <li><a href="/Test01/index.jsp">Home </a></li>
                 <li><a href="/Test01/ShowPatientsServlet" style="color:#44cef2">List Patient</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="#"></a></li>
                 <li><a href="#">Edit Profile</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
