@@ -20,6 +20,10 @@
         <servlet-name>ShowDataHServlet</servlet-name>
         <servlet-class>Servlet.ShowDataHServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowWaitDiagnosePatServlet</servlet-name>
+        <servlet-class>Servlet.ShowWaitDiagnosePatServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowPatients</servlet-name>
         <url-pattern>/ShowPatients</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ShowDataHServlet</servlet-name>
         <url-pattern>/ShowDataHServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowWaitDiagnosePatServlet</servlet-name>
+        <url-pattern>/ShowWaitDiagnosePatServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

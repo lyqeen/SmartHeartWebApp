@@ -27,11 +27,12 @@ public class Patient {
     private int patTel;
     private String underlying;
     private Timestamp infoDate;
+    private int dhId;
 
     public Patient() {
     }
 
-    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate) {
+    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate, int dhId) {
         this.patId = patId;
         this.patFname = patFname;
         this.patLname = patLname;
@@ -40,6 +41,7 @@ public class Patient {
         this.patTel = patTel;
         this.underlying = underlying;
         this.infoDate = infoDate;
+        this.dhId = dhId;
     }
 
     public int getPatId() {
@@ -104,6 +106,14 @@ public class Patient {
 
     public void setInfoDate(Timestamp infoDate) {
         this.infoDate = infoDate;
+    }
+
+    public int getDhId() {
+        return dhId;
+    }
+
+    public void setDhId(int dhId) {
+        this.dhId = dhId;
     }
 
     /*static public void CoompareDateTime(ArrayList a) {
@@ -174,28 +184,75 @@ public class Patient {
             pa.setPatTel(rs.getInt("p.pat_tel"));
             pa.setUnderlying(rs.getString("p.underlying_disease"));
             pa.setInfoDate(rs.getTimestamp("d.Maxtime"));
+
             plist.add(pa);
         }
         return plist;
     }
 
+    static public List<Patient> checkData(ArrayList a) throws SQLException, ClassNotFoundException {
+        Connection con = ConnectionBuilder.getMySqlConnServer();
+        List<Patient> patDia = null;
+        Patient po = null;
+        ArrayList<Patient> plist = new ArrayList<Patient>(a);
+
+        for (int i = 0; i < plist.size(); i++) {
+            int patIDD = plist.get(i).getPatId();
+            Timestamp dhtime = plist.get(i).getInfoDate();
+            int diastolic;
+
+            String query = "select * from DataHealths where infoDate=?";
+            PreparedStatement pstm = con.prepareStatement(query);
+            pstm.setTimestamp(1, dhtime);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                //String patID = rs.getString("pat_id");
+                diastolic = rs.getInt("diastolic");
+                //System.out.println("patID: "+patID);
+                //System.out.println("diastolic : "+diastolic);
+                if (diastolic == 90) {
+                    String query02 = "select p.*,d.Maxtime from (select pat_id, Max(infoDate) as Maxtime from DataHealths Group by pat_id )d INNER JOIN Patients p on p.pat_id = d.pat_id  WHERE  p.pat_id = ?";
+                    pstm = con.prepareStatement(query02);
+                    pstm.setInt(1, patIDD);
+                    rs = pstm.executeQuery();
+                    while (rs.next()) {
+                        po = new Patient();
+                        if (patDia == null) {
+                            patDia = new ArrayList<Patient>();
+                        }
+                        po.setPatId(rs.getInt("p.pat_id"));
+                        po.setPatFname(rs.getString("p.pat_fname"));
+                        po.setPatLname(rs.getString("p.pat_lname"));
+                        po.setInfoDate(rs.getTimestamp("d.Maxtime"));
+
+                        patDia.add(po);
+                    }
+                }
+            }
+        }
+        return patDia;
+    }
+
     @Override
     public String toString() {
-        return "Patient" + "patId=" + patId + ", "
-                + "patFname=" + patFname + ", "
+        return "Patient{" + "patId=" + patId + ","
+                + " patFname=" + patFname + ", "
                 + "patLname=" + patLname + ", "
-                + "infoDate=" + infoDate + '}' + "\n";
+                + "infoDate=" + infoDate + ", "
+                + "dhId=" + dhId + '}' + "\n";
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-       // ArrayList<Patient> p = null;
-        Patient pl = new Patient();
-       // p = (ArrayList<Patient>) Patient.doReadPatientName();
+        ArrayList<Patient> p = null;
+        //Patient pl = new Patient();
+        p = (ArrayList<Patient>) Patient.doReadPatientName();
+        List<Patient> test = Patient.checkData(p);
+        System.out.println(test);
         //System.out.println(p);
-        pl = Patient.showInfo(2);
-        System.out.println(pl);
-        
+        //pl = Patient.showInfo(2);
+        //System.out.println(pl);
+
 
         /* String[] colors = {"Red", "Blue", "Pink", "Yellow", "Orange"};
         //for ธรรมดา

@@ -97,7 +97,7 @@ public class DataHealth {
     public void setECG(String ECG) {
         this.ECG = ECG;
     }
-
+    
     static public DataHealth showDataHealth(int dhId) throws ClassNotFoundException, SQLException {
         DataHealth dh = new DataHealth();
         Connection con = ConnectionBuilder.getMySqlConnServer();
@@ -143,6 +143,17 @@ public class DataHealth {
 
         return dhList;
     }
+    
+    static public boolean checkData(int diastolic){
+        boolean check = false;
+        if(diastolic<80){
+            check=true;
+        }
+        return check;
+    }
+    
+    
+    
 
     @Override
     public String toString() {

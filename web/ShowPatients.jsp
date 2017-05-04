@@ -49,10 +49,9 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><a href="/Test01/index.jsp">Home </a></li>
-                <li><a href="/Test01/ShowPatientsServlet" style="color:#44cef2">List Patient</a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#">Edit Profile</a></li>
+                <li></a></li>
+                <li><a href="/Test01/ShowPatientsServlet" style="color:#44cef2"> รายชื่อผู้ป่วยทั้งหมด </a></li>
+                <li><a href="#"> ผู้ป่วยรอการวินิจฉัย </a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
@@ -83,6 +82,7 @@
                                 <td class="text-center">FIRST NAME</td>
                                 <td class="text-center">LAST NAME</td>
                                 <td class="text-center">SENT DATE</td>
+                                <td class="text-center">DATA ID</td>
                             </tr>
                         </thead>
 
@@ -98,7 +98,7 @@
                                 <td><%=pa.getPatFname()%></td>
                                 <td><%=pa.getPatLname()%></td>
                                 <td><%=pa.getInfoDate()%></td>
-
+                                <td><%=pa.getDhId()%></td>
                             </tr>
 
                             <%}
