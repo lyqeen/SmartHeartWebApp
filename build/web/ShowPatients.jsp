@@ -82,7 +82,7 @@
                                 <td class="text-center">FIRST NAME</td>
                                 <td class="text-center">LAST NAME</td>
                                 <td class="text-center">SENT DATE</td>
-                                <td class="text-center">DATA ID</td>
+                                
                             </tr>
                         </thead>
 
@@ -98,7 +98,7 @@
                                 <td><%=pa.getPatFname()%></td>
                                 <td><%=pa.getPatLname()%></td>
                                 <td><%=pa.getInfoDate()%></td>
-                                <td><%=pa.getDhId()%></td>
+                          
                             </tr>
 
                             <%}

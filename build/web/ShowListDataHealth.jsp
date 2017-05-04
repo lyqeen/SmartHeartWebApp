@@ -78,16 +78,17 @@
 
 
                 <br><br>
+                 <%
+                                Patient p = (Patient) request.getAttribute("infoPat");
+                            %>
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                    <img src="Image/01.jpg" class="img-circle"  width="150" height="150">
+                    <img src="<%=p.getImgPath()%>" class="img-circle"  width="150" height="150">
                 </div>
                 <div class="col-md-8 show_info">
                     <form method="post">
                         <table border="0">
-                            <%
-                                Patient p = (Patient) request.getAttribute("infoPat");
-                            %>
+                           
                             <tr>
                                 <td width="70px" valign="bottom" >
                                     Name
@@ -108,14 +109,14 @@
                                     Sex 
                                 </td>
                                 <td> 
-                                    <input type="text" class="info-pat" placeholder="Sex" value="<%=p.getPatSex()%>" readonly>
+                                    <input type="text" class="info-pat" placeholder="ไม่ได้ระบุเพศ" value="<%=p.getPatSex()%>" readonly>
                                 </td>
 
                                 <td valign="bottom">
                                     Age  
                                 </td>
                                 <td> 
-                                    <input type="text" class="info-pat" placeholder="age" value="<%=p.getPatAge()%>" readonly>
+                                    <input type="text" class="info-pat" placeholder="ไม่ทราบอายุ" value="<%=p.getPatAge()%>" readonly>
                                 </td>
                             </tr>
 
@@ -124,7 +125,7 @@
                                     แพ้ยา
                                 </td>
                                 <td>     
-                                    <input type="text" class="info-pat" placeholder="ไม่มีการแพ้ยา" value="<%=p.getUnderlying()%>" readonly></td>
+                                    <input type="text" class="info-pat" placeholder="ไม่มียาที่แพ้" value="<%=p.getUnderlying()%>" readonly></td>
                             </tr>
 
                         </table>

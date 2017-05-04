@@ -27,12 +27,12 @@ public class Patient {
     private int patTel;
     private String underlying;
     private Timestamp infoDate;
-    private int dhId;
+    private String imgPath;
 
     public Patient() {
     }
 
-    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate, int dhId) {
+    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate, String imgPath) {
         this.patId = patId;
         this.patFname = patFname;
         this.patLname = patLname;
@@ -41,8 +41,10 @@ public class Patient {
         this.patTel = patTel;
         this.underlying = underlying;
         this.infoDate = infoDate;
-        this.dhId = dhId;
+        this.imgPath = imgPath;
     }
+
+    
 
     public int getPatId() {
         return patId;
@@ -108,13 +110,15 @@ public class Patient {
         this.infoDate = infoDate;
     }
 
-    public int getDhId() {
-        return dhId;
+    public String getImgPath() {
+        return imgPath;
     }
 
-    public void setDhId(int dhId) {
-        this.dhId = dhId;
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
+
+
 
     /*static public void CoompareDateTime(ArrayList a) {
         ArrayList<Patient> plist = new ArrayList<Patient>(a);
@@ -157,6 +161,7 @@ public class Patient {
             pa.setPatSex(rs.getString("pat_sex"));
             pa.setPatTel(rs.getInt("pat_tel"));
             pa.setUnderlying(rs.getString("underlying_disease"));
+            pa.setImgPath(rs.getString("imagePath"));
         }
         return pa;
     }
@@ -211,7 +216,9 @@ public class Patient {
                 //System.out.println("patID: "+patID);
                 //System.out.println("diastolic : "+diastolic);
                 if (diastolic == 90) {
-                    String query02 = "select p.*,d.Maxtime from (select pat_id, Max(infoDate) as Maxtime from DataHealths Group by pat_id )d INNER JOIN Patients p on p.pat_id = d.pat_id  WHERE  p.pat_id = ?";
+                    String query02 = "select p.*,d.Maxtime from (select pat_id, Max(infoDate) as Maxtime from "
+                            + "DataHealths Group by pat_id )d INNER JOIN Patients p on p.pat_id = d.pat_id "
+                            + " WHERE  p.pat_id = ?";
                     pstm = con.prepareStatement(query02);
                     pstm.setInt(1, patIDD);
                     rs = pstm.executeQuery();
@@ -238,8 +245,7 @@ public class Patient {
         return "Patient{" + "patId=" + patId + ","
                 + " patFname=" + patFname + ", "
                 + "patLname=" + patLname + ", "
-                + "infoDate=" + infoDate + ", "
-                + "dhId=" + dhId + '}' + "\n";
+                + "infoDate=" + infoDate + ", " + "\n";
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -247,9 +253,9 @@ public class Patient {
         ArrayList<Patient> p = null;
         //Patient pl = new Patient();
         p = (ArrayList<Patient>) Patient.doReadPatientName();
-        List<Patient> test = Patient.checkData(p);
-        System.out.println(test);
-        //System.out.println(p);
+        //List<Patient> test = Patient.checkData(p);
+        //System.out.println(test);
+        System.out.println(p);
         //pl = Patient.showInfo(2);
         //System.out.println(pl);
 

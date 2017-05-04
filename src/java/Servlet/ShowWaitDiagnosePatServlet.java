@@ -8,6 +8,7 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,13 +38,12 @@ public class ShowWaitDiagnosePatServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
+          
         List<Patient> plist = null;
-        Patient p = new Patient();
+        List<Patient> test =null;
         try {
-            
-            plist = p.doReadPatientName();
-            
+            plist = Patient.doReadPatientName();
+            test = Patient.checkData((ArrayList) plist);
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -51,8 +51,8 @@ public class ShowWaitDiagnosePatServlet extends HttpServlet {
             Logger.getLogger(ShowPatientsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        request.setAttribute("patientList", plist);
-        getServletContext().getRequestDispatcher("/ShowPatients.jsp").forward(request, response);
+        request.setAttribute("patDia", test);
+        getServletContext().getRequestDispatcher("/ShowWaitDiagnosePat.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
