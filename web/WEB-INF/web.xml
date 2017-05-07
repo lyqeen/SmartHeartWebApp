@@ -24,6 +24,10 @@
         <servlet-name>ShowWaitDiagnosePatServlet</servlet-name>
         <servlet-class>Servlet.ShowWaitDiagnosePatServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowGraphServlet</servlet-name>
+        <servlet-class>Servlet.ShowGraphServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowPatients</servlet-name>
         <url-pattern>/ShowPatients</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ShowWaitDiagnosePatServlet</servlet-name>
         <url-pattern>/ShowWaitDiagnosePatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowGraphServlet</servlet-name>
+        <url-pattern>/ShowGraphServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

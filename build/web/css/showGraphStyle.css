@@ -1,0 +1,148 @@
+.clearfix{
+     clear: both;
+}
+
+
+.navmenu{
+    background-color: #ffff;
+    position: relative;
+    box-shadow:0px 1px 1px 1px #c5c6c7;
+   
+}
+
+.nav-justified{
+    padding-top: 1.9em;
+    background-color: #ffffff;
+    padding-bottom: 1.4em;
+}
+
+.nav>li>a {
+    font-size: 11.5pt;
+    font-weight:bold;
+    color: #545454;
+    background-color: #ffffff;
+}
+
+
+#menu a:hover{
+    color: #44cef2;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+/******End Menu*******/
+
+.allContent{
+    background-color: white;
+    padding-bottom: 4em;
+}
+
+.mainTopic{
+    font-size: 15pt;
+    color: #42bbd0;
+    
+}
+
+.dec_line{
+    position:absolute;
+    top:2.5em;
+    left: 2.3em;
+}
+
+.sequenceLink{
+    font-size: 11pt;
+}
+
+.textInfo{
+    color: #44cef2;
+}
+.sequenceLink a{
+    color: black;   
+    text-decoration: none;
+}
+
+.sequenceLink a:hover{
+    color: #44cef2;
+    text-decoration: none;
+}
+
+/****** Info *******/
+.show_info{
+   font-size: 12.5pt;
+    margin-top: 1em;
+}
+
+.info {
+  color: #44cef2;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #d8d8d8;
+  padding-left: 5px;
+  margin-right: 2em
+}
+
+/*******Image ECG********/
+.imgECG{
+    position: absolute;
+    top: 5em;
+    
+}
+
+/********Diagnose******/
+.checkArrhy{
+    font-size: 12.5pt;
+}
+
+
+
+
+.submit-btn input[type="submit"] {
+	background:  #44cef2;
+	color: #FFF;
+	font-size: 1em;
+	padding: 10px 120px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+        border: none;
+}
+
+
+
+.submit-btn input[type="submit"]:hover{
+	background:#42bbd0;
+	text-decoration:none;
+	color:#fff;
+        border: none;
+}
+
+
+
+
+
+
+
+
+.footer{
+    
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:  #3b3b3b;
+    padding-left: 50px;
+    padding-bottom: 18px;
+    padding-top: 20px;
+    color: white;
+   
+    
+}
+
+
+
+
+
+

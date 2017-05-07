@@ -106,6 +106,7 @@ public class DataHealth {
         pstm.setInt(1, dhId);
         ResultSet rs = pstm.executeQuery();
        if(rs.next()){
+        dh.setDaId(rs.getInt("dh_id"));
         dh.setInfoDate(rs.getTimestamp("infoDate"));
         dh.setSystolic(rs.getInt("systolic"));
         dh.setDiastolic(rs.getInt("diastolic"));
@@ -154,7 +155,7 @@ public class DataHealth {
     
     
     
-
+    
     @Override
     public String toString() {
         return "DataHealth{" + "daId=" + daId + ", infoDate=" + infoDate + ", weight=" + weight + ", systolic=" + systolic + ", diastolic=" + diastolic + ", heartRate=" + heartRate + ", ECG=" + ECG + '}'+"\n";

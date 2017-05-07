@@ -28,11 +28,12 @@ public class Patient {
     private String underlying;
     private Timestamp infoDate;
     private String imgPath;
+    private int dhID;
 
     public Patient() {
     }
 
-    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate, String imgPath) {
+    public Patient(int patId, String patFname, String patLname, int patAge, String patSex, int patTel, String underlying, Timestamp infoDate, String imgPath, int dhID) {
         this.patId = patId;
         this.patFname = patFname;
         this.patLname = patLname;
@@ -42,7 +43,10 @@ public class Patient {
         this.underlying = underlying;
         this.infoDate = infoDate;
         this.imgPath = imgPath;
+        this.dhID = dhID;
     }
+
+   
 
     
 
@@ -118,6 +122,16 @@ public class Patient {
         this.imgPath = imgPath;
     }
 
+    public int getDhID() {
+        return dhID;
+    }
+
+    public void setDhID(int dhID) {
+        this.dhID = dhID;
+    }
+
+    
+    
 
 
     /*static public void CoompareDateTime(ArrayList a) {
@@ -155,6 +169,7 @@ public class Patient {
         pstm.setInt(1, patID);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
+            pa.setPatId(rs.getInt("pat_id"));
             pa.setPatFname(rs.getString("pat_fname"));
             pa.setPatLname(rs.getString("pat_lname"));
             pa.setPatAge(rs.getInt("pat_age"));
@@ -216,9 +231,11 @@ public class Patient {
                 //System.out.println("patID: "+patID);
                 //System.out.println("diastolic : "+diastolic);
                 if (diastolic == 90) {
-                    String query02 = "select p.*,d.Maxtime from (select pat_id, Max(infoDate) as Maxtime from "
-                            + "DataHealths Group by pat_id )d INNER JOIN Patients p on p.pat_id = d.pat_id "
-                            + " WHERE  p.pat_id = ?";
+                    String query02 = "select p.*,ddh.Maxtime,ddh.dh_id from "
+                            + "(SELECT dh.dh_id,d.pat_id,d.Maxtime FROM (select pat_id, Max(infoDate) as"
+                            + " Maxtime from DataHealths Group by pat_id )d  INNER JOIN DataHealths dh ON "
+                            + " d.Maxtime =dh.infoDate)ddh INNER JOIN Patients p on p.pat_id = ddh.pat_id "
+                            + "WHERE  p.pat_id = ?";
                     pstm = con.prepareStatement(query02);
                     pstm.setInt(1, patIDD);
                     rs = pstm.executeQuery();
@@ -230,8 +247,8 @@ public class Patient {
                         po.setPatId(rs.getInt("p.pat_id"));
                         po.setPatFname(rs.getString("p.pat_fname"));
                         po.setPatLname(rs.getString("p.pat_lname"));
-                        po.setInfoDate(rs.getTimestamp("d.Maxtime"));
-
+                        po.setInfoDate(rs.getTimestamp("ddh.Maxtime"));
+                        po.setDhID(rs.getInt("ddh.dh_id"));
                         patDia.add(po);
                     }
                 }

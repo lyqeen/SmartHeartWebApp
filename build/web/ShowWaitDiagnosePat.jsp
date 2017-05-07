@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Prompt" rel="stylesheet">
 
         <!-- Script tags-->
         <script src="js/jquery-3.2.0.min.js"></script>
@@ -27,10 +27,11 @@
 
         <style>
             body {
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Prompt','Open Sans', sans-serif;
                 background-color: #fcfcfc
             }
         </style>
+
 
         <title>Patient wait for...</title>
     </head>
@@ -96,7 +97,8 @@
                                 for (Patient pa : pl) {
 
                         %>
-                            <tr onclick="window.document.location = 'ShowListDataHealthServlet?idPat=<%=pa.getPatId()%>';">
+                            <tr onclick="window.document.location = 
+                                        'ShowGraphServlet?idPat=<%=pa.getPatId()%>&dhId=<%=pa.getDhID()%>';">
                                 <td><%=pa.getPatId()%></td>
                                 <td><%=pa.getPatFname()%> </td> 
                                 <td><%=pa.getPatLname()%> </td>

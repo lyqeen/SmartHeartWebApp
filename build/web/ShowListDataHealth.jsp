@@ -19,16 +19,17 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Prompt" rel="stylesheet">
+
 
         <!-- Script tags-->
         <script src="js/jquery-3.2.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
 
-        <style>
+         <style>
             body {
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Prompt','Open Sans', sans-serif;
                 background-color: #fcfcfc
             }
         </style>
@@ -51,10 +52,9 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li><a href="#">Home </a></li>
-                <li><a href="/Test01/ShowPatientsServlet" style="color:#44cef2">List Patient</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Edit Profile</a></li>
+                <li></a></li>
+                <li><a href="/Test01/ShowPatientsServlet"> รายชื่อผู้ป่วยทั้งหมด </a></li>
+                <li><a href="/Test01/ShowWaitDiagnosePatServlet"> ผู้ป่วยรอการวินิจฉัย </a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </div>
@@ -78,9 +78,9 @@
 
 
                 <br><br>
-                 <%
-                                Patient p = (Patient) request.getAttribute("infoPat");
-                            %>
+                <%
+                    Patient p = (Patient) request.getAttribute("infoPat");
+                %>
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
                     <img src="<%=p.getImgPath()%>" class="img-circle"  width="150" height="150">
@@ -88,17 +88,17 @@
                 <div class="col-md-8 show_info">
                     <form method="post">
                         <table border="0">
-                           
+
                             <tr>
-                                <td width="70px" valign="bottom" >
-                                    Name
+                                <td width="90px" valign="bottom" >
+                                    ชื่อ
                                 </td>
                                 <td>    
                                     <input type="text" class="info-pat"  value="<%=p.getPatFname()%>" readonly>
                                 </td>
 
                                 <td width="100px" valign="bottom">    
-                                    Last name
+                                    นามสกุล
                                 </td>
                                 <td> 
                                     <input type="text" class="info-pat" value="<%=p.getPatLname()%>" readonly>
@@ -106,14 +106,14 @@
                             </tr>
                             <tr>
                                 <td valign="bottom">
-                                    Sex 
+                                    เพศ 
                                 </td>
                                 <td> 
                                     <input type="text" class="info-pat" placeholder="ไม่ได้ระบุเพศ" value="<%=p.getPatSex()%>" readonly>
                                 </td>
 
                                 <td valign="bottom">
-                                    Age  
+                                    อายุ  
                                 </td>
                                 <td> 
                                     <input type="text" class="info-pat" placeholder="ไม่ทราบอายุ" value="<%=p.getPatAge()%>" readonly>
@@ -122,10 +122,10 @@
 
                             <tr>
                                 <td valign="bottom"> 
-                                    แพ้ยา
+                                    โรคประจำตัว
                                 </td>
                                 <td>     
-                                    <input type="text" class="info-pat" placeholder="ไม่มียาที่แพ้" value="<%=p.getUnderlying()%>" readonly></td>
+                                    <input type="text" class="info-pat" placeholder="ไม่มีโรคประจำตัว" value="<%=p.getUnderlying()%>" readonly></td>
                             </tr>
 
                         </table>
@@ -176,8 +176,8 @@
                             %>
 
 
-                            <tr onclick="window.document.location = 'ShowDataHServlet?dhId=<%=dh.getDaId()%>';">
-                                <td><%=i%></td>
+                            <tr onclick="window.document.location = 'ShowGraphServlet?idPat=<%=p.getPatId()%>&dhId=<%=dh.getDaId()%>';">
+                                <td><%=dh.getDaId()%></td>
                                 <td><%=dh.getInfoDate()%></td>
                             </tr>
                             <%i++;
@@ -185,9 +185,9 @@
                                 }%>
                         </tbody>
 
-                       
+
                     </table>
-                        
+
                 </div>
             </div>
         </div>

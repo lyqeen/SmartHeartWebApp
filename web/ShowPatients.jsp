@@ -18,16 +18,17 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Prompt" rel="stylesheet">
+
 
         <!-- Script tags-->
         <script src="js/jquery-3.2.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
 
-        <style>
+         <style>
             body {
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Prompt','Open Sans', sans-serif;
                 background-color: #fcfcfc
             }
         </style>
