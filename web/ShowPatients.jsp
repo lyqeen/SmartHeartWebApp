@@ -53,7 +53,7 @@
                 <li></a></li>
                 <li><a href="/Test01/ShowPatientsServlet" style="color:#44cef2"> รายชื่อผู้ป่วยทั้งหมด </a></li>
                 <li><a href="/Test01/ShowWaitDiagnosePatServlet"> ผู้ป่วยรอการวินิจฉัย </a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/Test01/LogoutServlet">Logout</a></li>
             </ul>
         </div>
 

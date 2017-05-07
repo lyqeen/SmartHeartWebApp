@@ -53,7 +53,7 @@
                     <a href="/Test01/ShowWaitDiagnosePatServlet">รายชื่อผู้ป่วยรอการวินิฉัย </a>
                 </li>
 
-                <li><a href="#">Logout</a></li>
+                <li><a href="/Test01/LogoutServlet">Logout</a></li>
 
             </ul>
         </div>
