@@ -58,7 +58,8 @@
 
       </div> <!-- end login -->
       <div class="logo">
-          <img src="Image/logotypr05.png">
+          <img src="Image/logotypr06.png" style="width: 300px;
+    margin-top: 20px;">
           <div class="clearfix"></div>
       </div>
       

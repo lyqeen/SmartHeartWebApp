@@ -107,7 +107,8 @@ if(request.getAttribute("message")!= null){
       out.write("\n");
       out.write("      </div> <!-- end login -->\n");
       out.write("      <div class=\"logo\">\n");
-      out.write("          <img src=\"Image/logotypr05.png\">\n");
+      out.write("          <img src=\"Image/logotypr06.png\" style=\"width: 300px;\n");
+      out.write("    margin-top: 20px;\">\n");
       out.write("          <div class=\"clearfix\"></div>\n");
       out.write("      </div>\n");
       out.write("      \n");

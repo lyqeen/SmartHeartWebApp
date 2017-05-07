@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Font -->
-         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Prompt" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Prompt" rel="stylesheet">
 
         <!-- Script tags-->
         <script src="js/jquery-3.2.0.min.js"></script>
@@ -83,7 +83,7 @@
                     <table  class="table table-hover showListPat"> 
                         <thead>
                             <tr  class="titleTable">
-                                
+
                                 <td class="text-center" > PATIENT NO </td>
                                 <td class="text-center">FIRST NAME</td>
                                 <td class="text-center">LAST NAME</td>
@@ -92,26 +92,31 @@
                         </thead>
                         <tbody>
                             <%
-                            List<Patient> pl = (List) request.getAttribute("patDia");
+                                List<Patient> pl = (List) request.getAttribute("patDia");
                                 if (pl != null) {
-                                for (Patient pa : pl) {
+                                    for (Patient pa : pl) {
 
-                        %>
-                            <tr onclick="window.document.location = 
-                                        'ShowGraphServlet?idPat=<%=pa.getPatId()%>&dhId=<%=pa.getDhID()%>';">
+                            %>
+                            <tr onclick="window.document.location =
+                                            'ShowGraphServlet?idPat=<%=pa.getPatId()%>&dhId=<%=pa.getDhID()%>';">
                                 <td><%=pa.getPatId()%></td>
                                 <td><%=pa.getPatFname()%> </td> 
                                 <td><%=pa.getPatLname()%> </td>
                                 <td><%=pa.getInfoDate()%> </td>
                             </tr>
-                             <%}}%>
+                            <%}
+                                 }%>
                         </tbody>
-                        
+
                     </table>
                 </div>
-               
+
 
             </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="footer">
+            Copyright by abcdefghij 2017. All rights reserved.
         </div>
 
     </body>

@@ -20,7 +20,7 @@ public class ConnectionBuilder {
     
     public static Connection getMySqlConnServer() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://139.59.224.58:3306/SmartHeart4Project", "project", "Smartheartg.37");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://10.4.56.4:3306/SmartHeart4Project", "sirisakpks", "Ojo.sirisak123");
       
         return conn;
     }
